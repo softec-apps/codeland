@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Menu_Sound_Forward.wav-cab3348762cd32d2c37b04f08ae54260.sample"
+
+[deps]
+
+source_file="res://assets/Menu_Sounds_Free/Menu_Sound_Forward.wav"
+dest_files=[ "res://.import/Menu_Sound_Forward.wav-cab3348762cd32d2c37b04f08ae54260.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

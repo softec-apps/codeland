@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/buttons/SPACEALTERNATIVE.png" type="Texture" id=2]
+[ext_resource path="res://assets/buttons/ARROWLEFT.png" type="Texture" id=3]
+[ext_resource path="res://assets/buttons/ARROWRIGHT.png" type="Texture" id=4]
+[ext_resource path="res://GUI/Intro.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 67, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 67, 0, 67, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 17, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 17, 0, 17, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 17, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 17, 0, 17, 16 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 1 ), SubResource( 2 ), SubResource( 1 ) ],
+"loop": false,
+"name": "space",
+"speed": 1.3
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 3 ), SubResource( 4 ), SubResource( 3 ) ],
+"loop": false,
+"name": "der",
+"speed": 1.3
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 5 ), SubResource( 6 ), SubResource( 5 ) ],
+"loop": false,
+"name": "izq",
+"speed": 1.3
+} ]
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 150, -500 ), Vector2( 150, -500 ), Vector2( -100, 0 ), Vector2( 50, -100 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1.2 ), Vector2( 1.2, 0.8 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_right = 1028.0
+margin_bottom = 603.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+
+[node name="tutorial" type="AnimatedSprite" parent="CanvasLayer/Node2D"]
+position = Vector2( 520, 350 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 7 )
+animation = "space"
+frame = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Node2D"]
+margin_left = 161.937
+margin_top = 235.691
+margin_right = 899.937
+margin_bottom = 292.691
+custom_fonts/font = SubResource( 8 )
+text = "Este juego utiliza  las siguientes teclas"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="funciones" type="Label" parent="CanvasLayer/Node2D"]
+margin_left = 330.0
+margin_top = 400.0
+margin_right = 726.0
+margin_bottom = 418.0
+custom_fonts/font = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/intro = SubResource( 10 )
+
+[connection signal="animation_finished" from="CanvasLayer/Node2D/tutorial" to="." method="_on_tutorial_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

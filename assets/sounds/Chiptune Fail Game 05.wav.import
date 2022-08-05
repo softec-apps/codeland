@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Chiptune Fail Game 05.wav-d6afac21a4e4e1bed1f584d827a50817.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Chiptune Fail Game 05.wav"
+dest_files=[ "res://.import/Chiptune Fail Game 05.wav-d6afac21a4e4e1bed1f584d827a50817.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
